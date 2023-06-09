@@ -1,0 +1,20 @@
+% extends 'catalog/base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block contacts %}
+
+    <div class="container">
+        <h1 class="text-warning">Форма создания поста</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+            Подтверждаете удаление {{ object.title }}?
+            </table>
+            <input class="btn-danger" type="submit" value="Удалить">
+
+        </form>
+    <a type="button" href="{% url 'catalog:post_list' %}"
+               class="btn btn-lg btn-block btn-link">Назад</a>
+    </div>
+{% endblock %}

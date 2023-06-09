@@ -34,7 +34,7 @@
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>СберМаркет</strong>
+            <strong>СберМаркетFast</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,13 +62,37 @@
       </div>
     </main>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+    <footer class="col-sm-8 col-md-12 py-4">
+      <div class="row">
+        <div class="col-12 col-md ml-5">
+          <a href="{% url 'catalog:home' %}" class="text-muted"><h5>СберМаркетFast</h5></a>
+          <small class="d-block mb-3 text-muted">&copy; 2022-2023</small>
+        </div>
+        <div class="col-6 col-md">
+           <h5>О компании</h5>
+           <ul class="list-unstyled text-small">
+             <li><a class="text-muted" href="#"></a></li>
+             <li><a class="text-muted" href="#">Контакты</a></li>
+             <li><a class="text-muted" href="#">Статья курьерам</a></li>
+             <li><a class="text-muted" href="#">Ресторанам</a></li>
+             <li><a class="text-muted" href="#">Ретейлерам</a></li>
+           </ul>
+        </div>
+        <div class="col-6 col-md">
+           <h5>Помощь</h5>
+           <ul class="list-unstyled text-small">
+             <li><a class="text-muted" href="#">Как мы работам</a></li>
+             <li><a class="text-muted" href="#">Зоны доставки</a></li>
+             <li><a class="text-muted" href="#">Доставка и оплата</a></li>
+           </ul>
+        </div>
+        <div class="col-6 col-md">
+           <h5>8-800-555-35-35</h5>
+          <p class="text-small text-muted mb-2">Обращайтесь в любое время</p>
+          <a class="btn btn-secondary mb-2" href="{% url 'catalog:contacts' %}">Форма обратной связи</a>
+          <p class="text-small text-muted mb-2">Напишите нам мы обязательно вам поможем в решении ваших вопросов!</p>
+        </div>
+        </div>
       </div>
     </footer>
 

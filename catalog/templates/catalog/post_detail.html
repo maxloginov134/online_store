@@ -1,0 +1,27 @@
+{% extends 'catalog/base.html' %}
+{% block contacts %}
+    <div class="container">
+        <h4 class="bg-info">Заголовок: {{ object.title }}</h4>
+        <br>
+        <h4 class="bg-info">Контент: {{ object.content }}</h4>
+        <br>
+        <h4 class="bg-info">Количество просмотров: {{ object.count_views }}</h4>
+
+        <br>
+        <h4 class="bg-info">Слаг: {{ object.slug }}</h4>
+
+        <br>
+        <h4 class="bg-info">Добавлено: {{ object.created_at }}</h4>
+
+        <br>
+        <h4 class="bg-info">Опубликовано: {{ object.is_published }}</h4>
+
+        {% if object.image %}
+
+            <img src="{{ object.image.url }}" alt="img">
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}

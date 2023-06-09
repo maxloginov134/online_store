@@ -1,0 +1,17 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block contacts %}
+
+    <div class="container">
+        <h1 class="text-warning">Форма создания поста</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {{ form }}
+            </table>
+            <input class="btn-success" type="submit" value="Отправить">
+        </form>
+    </div>
+{% endblock %}
