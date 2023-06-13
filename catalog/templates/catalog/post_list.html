@@ -1,40 +1,42 @@
 {% extends 'catalog/base.html' %}
 {% block contacts %}
-<div class="col-12">
-    <a class="btn btn-lg btn-outline-primary m-3" href="{% url 'catalog:post_form' %}">Создать пост</a>
-</div>
     <div class="container">
+        <div class="col-12">
+            <a class="btn btn-lg btn-outline-primary mb-4" href="{% url 'catalog:post_form' %}">Создать пост</a>
+        </div>
         {% for object in object_list %}
-            {% if object.is_published %} 
+            {% if object.is_published %}
             <div class="text-center">
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
-                        </div>
-                        {% if object.preview %}
+                        <div class="card rounded-3 shadow-sm">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+                            </div>
+                            {% if object.preview %}
 
-                            <img src="{{ object.preview.url }}" alt="img">
-                        {% endif %}
-                        <div class="card-body">
+                                <img src="{{ object.preview.url }}" alt="img">
+                            {% endif %}
+                            <div class="card-body">
 
 
-                            <ul class="list-unstyled mt-3 mb-4 text-start mb-2">
-                                <li>- {{ object.content }}</li>
+                                <ul class="list-unstyled mt-3 mb-4 text-start mb-2">
+                                    <li class="text-black-50"> {{ object.content }} </li>
 
-                            </ul>
 
-                            <a type="button" href="{% url 'catalog:post_detail' object.id %}"
-                               class="btn btn-lg btn-block btn-outline-primary">Детализация</a>
-                             <a type="button" href="{% url 'catalog:update_post' object.id %}"
-                               class="btn btn-lg btn-block btn-danger">Изменить</a>
+                                </ul>
+
+
+                                <a type="button" href="{% url 'catalog:post_detail' object.id %}"
+                                    class="btn btn-lg btn-block btn-outline-primary">Детализация</a>
+                                <a type="button" href="{% url 'catalog:update_post' object.id %}"
+                                    class="btn btn-lg btn-block btn-danger">Изменить</a>
+                            </div>
+                            <p class="text-black-50 text-left m-2">{{ object.count_views }} просмотра</p>
                         </div>
                     </div>
                 </div>
             {% endif %}
-
         {% endfor %}
-
     </div>
-
-{%  endblock %}
+{% endblock %}

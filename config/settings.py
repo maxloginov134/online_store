@@ -134,5 +134,5 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST = 'smtp.mail.com'
 EMAIL_HOST_USER = 'maxloginov2001@mail.ru'

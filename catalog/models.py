@@ -57,10 +57,14 @@ class Post(models.Model):
     title = models.CharField(max_length=20, verbose_name='Заголовок')
     slug = models.CharField(max_length=30, verbose_name='Слаг')
     content = models.TextField(verbose_name='Контент')
-    preview = models.ImageField(upload_to='media', verbose_name='Изображение', blank=True, null=True)
+    preview = models.ImageField(upload_to='media/image/', verbose_name='Изображение', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
     count_views = models.IntegerField(default=0, verbose_name='Количество просмотров')
+
+    def save(self, *args, **kwargs):
+        self.slug = translit(self.title, language_code='ru', reversed=True)
+        super().save(*args, **kwargs)
 
     def delete(self, using=None, keep_parents=False):
         self.is_published = False
