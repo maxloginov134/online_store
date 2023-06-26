@@ -22,7 +22,7 @@ class Product(models.Model):
 
     title = models.CharField(max_length=200, verbose_name='Наименование')
     description = models.TextField(verbose_name='Описание')
-    image = models.ImageField(upload_to='images/', verbose_name='Превью', **NULLABLE)
+    image = models.ImageField(upload_to='media/images/', verbose_name='Превью', **NULLABLE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.FloatField(verbose_name='Цена')
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -76,4 +76,25 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+
+class Version(models.Model):
+    product = models.ForeignKey(Product, related_name='versions', on_delete=models.CASCADE, max_length=200, verbose_name='Продукт')
+    number_version = models.FloatField(verbose_name='Номер версии')
+    name_version = models.CharField(max_length=200, verbose_name='Название версии')
+    is_active = models.BooleanField(default=False, verbose_name='Активная')
+
+    def save(self, *args, **kwargs):
+        versions = Version.objects.filter(product_id=self.product.id)
+        for version in versions:
+            if version.is_active == True:
+                raise ValueError('У продукта уже есть активная версия')
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.product.title} {self.name_version}'
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версия'
 

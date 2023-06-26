@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+{% block contacts %}
+    <div class="container">
+        <div class="card-header">
+            <h2 class="text-center">Детали товара</h2>
+        </div>
+        <div class="card-body">
+            <h4 class="bg-secondary text-light">Наименование: {{ object.title }}</h4>
+
+            <h4 class="bg-secondary text-light">Описание: {{ object.description }}</h4>
+
+            <h4 class="bg-secondary text-light">Категория: {{ object.category }}</h4>
+
+            <h4 class="bg-secondary text-light">Цена: {{ object.price }}</h4>
+
+            <h4 class="bg-secondary text-light">Номер версии: {{ version.number_version }}</h4>
+            <h4 class="bg-secondary text-light">Название: {{ version.name_version }}</h4>
+        </div>
+    </div>
+
+
+{% endblock %}

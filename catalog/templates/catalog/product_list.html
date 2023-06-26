@@ -1,27 +1,42 @@
 {% extends 'catalog/base.html' %}
 {% block contacts %}
 <div class="container">
+
   <h2 class="text-center">Список продуктов</h2>
+  <div class="col-12">
+    <a class="btn btn-lg btn-primary col-2" href="{% url 'catalog:product_create' %}">Добавить товар</a>
+  </div>
   <p style="color:white">.</p>
 </div>
 {% load my_tegs %}
   {% for object in object_list %}
 
   <div class="col-md-4">
-    <div class="card mb-4 box-shadow">
+    <div class="card mb-4 box-shadow border border-secondary">
       <div class="card">
-            <img class="rounded mx-auto d-block" src="{{ object.images|app_media }}" alt="Product Image" width="80%"
-
-                 height="350">
+        {% if object.image %}
+            <img src="{{ object.image.url }}" alt="img" width="200" height="100">
+        {% endif %}
       </div>
       <div class="card-body">
-        <p class="card-text">{{ object }}</p>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-          </div>
-        </div>
+        <h4 class="card-text">Товар: {{ object.title }}</h4>
+        <p class="card-text">Описание: {{ object.description }}</p>
+        <p class="card-text">Категория: {{ object.category }}</p>
+        <p class="card-text">Цена: {{ object.price }}</p>
+        <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+
+
+        {% for ver in object.versions.all %}
+          {% if ver.is_active %}
+            <li>Название версии: {{ ver.name_version }}</li>
+            <li>Номер версии: {{ ver.number_version }}</li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+        <a type="button" href="{% url 'catalog:product_detail' object.id %}"
+           class="btn btn-lg btn-block btn-outline-primary">Детализация</a>
+        <a type="button" href="{% url 'catalog:update_product' object.id %}"
+           class="btn btn-lg btn-block btn-danger">Изменить</a>
       </div>
     </div>
   </div>
