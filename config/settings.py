@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'catalog'
+    'catalog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 EMAIL_HOST = 'smtp.mail.com'
 EMAIL_HOST_USER = 'maxloginov2001@mail.ru'
+
+AUTH_USER_MODEL = "users.User"
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

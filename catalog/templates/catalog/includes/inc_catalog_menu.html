@@ -9,5 +9,11 @@
     <li><a href="{% url 'catalog:home' %}" class="text-white">Главная страница</a></li>
     <li><a href="{% url 'catalog:contacts'%}" class="text-white">Обратная связь</a></li>
     <li><a href="{% url 'catalog:post_list'%}" class="text-white">Список постов</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'users:logout'%}" class="text-white">Выйти</a></li>
+    {% else %}
+      <li><a href="{% url 'users:login'%}" class="text-white">Войти</a></li>
+      <li><a href="{% url 'users:register'%}" class="text-white">Регистрация</a></li>
+    {% endif %}
   </ul>
 </div>
